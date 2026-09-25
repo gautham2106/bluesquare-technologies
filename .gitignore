@@ -27,3 +27,6 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# local session metadata, not project config
+.claude/scheduled_tasks.lock
