@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  @apply bg-surface text-ink dark:bg-surface-dark dark:text-white antialiased;
+}
+
+::selection {
+  @apply bg-brand-500/20 text-ink dark:text-white;
+}
+
+.focus-ring {
+  @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-surface dark:focus-visible:ring-offset-surface-dark;
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+}
+
+.section-pad {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+
+.btn {
+  @apply focus-ring inline-flex items-center justify-center gap-2 rounded-sq px-5 py-3 text-sm font-semibold transition-transform duration-150 active:scale-[0.98];
+}
+
+.btn-primary {
+  @apply btn bg-accent-500 text-ink shadow-card hover:bg-accent-400;
+}
+
+.btn-secondary {
+  @apply btn border border-brand-500/30 bg-white text-brand-600 hover:bg-brand-50 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10;
+}
+
+.btn-ghost {
+  @apply btn bg-brand-500 text-white hover:bg-brand-600;
+}
+
+.card {
+  @apply rounded-sq border border-ink/[0.06] bg-white shadow-card dark:border-white/10 dark:bg-surface-darkcard dark:shadow-card-dark;
+}
+
+/* Background square-grid motif */
+.square-grid-cell {
+  @apply rounded-sqsm border border-brand-500/[0.08] bg-brand-500/[0.03] dark:border-brand-300/[0.08] dark:bg-brand-300/[0.04];
+}
+
+/* ---------------------------------------------------------------------- */
+/* FlatHunter (/flathunter) — a distinct sub-product with its own visual  */
+/* language (bigger radius, no dark mode). Classes are "fh-" prefixed so  */
+/* they never collide with the main site's .btn/.card/etc above.         */
+/* ---------------------------------------------------------------------- */
+
+.fh-focus-ring {
+  @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
+}
+
+.fh-container-page {
+  @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+}
+
+.fh-section-pad {
+  @apply py-14 sm:py-20 lg:py-24;
+}
+
+.fh-btn {
+  @apply fh-focus-ring inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold transition-transform duration-150 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+}
+
+.fh-btn-primary {
+  @apply fh-btn bg-brand-500 text-white shadow-fh-card hover:bg-brand-600;
+}
+
+.fh-btn-secondary {
+  @apply fh-btn border border-brand-500/25 bg-white text-brand-600 hover:bg-brand-50;
+}
+
+.fh-btn-ghost-white {
+  @apply fh-btn border border-white/40 bg-white/10 text-white hover:bg-white/20;
+}
+
+.fh-card {
+  @apply rounded-2xl border border-ink/[0.06] bg-surface-card shadow-fh-soft;
+}
+
+/* Leaflet applies this class itself (react-leaflet's MapContainer merges in
+   any className prop but always keeps this base one) — no "fh-" prefix
+   needed since the main site never renders a Leaflet map. */
+.leaflet-container {
+  @apply h-full w-full rounded-2xl;
+  font-family: inherit;
+}
